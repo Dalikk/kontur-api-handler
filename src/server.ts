@@ -20,5 +20,6 @@ app.get('/product/rests/filtered', ProductsController.filteredProducts);
 app.get('/product/:id', ProductsController.getOneProduct);
 
 app.listen(3002, () => {
+  // eslint-disable-next-line no-console
   console.log(`Express app started at http://localhost:3002`);
 });

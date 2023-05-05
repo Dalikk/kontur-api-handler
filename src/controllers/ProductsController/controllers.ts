@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { IProduct, IProductRestDetailed } from '@/types';
-import { getProducts } from './helpers';
+import { getDetailedProductsRest } from './helpers';
 
 import * as API from '../../apiKontur';
 
@@ -13,7 +13,7 @@ export const getProductRests = async (
   req: Request,
   res: Response<IProductRestDetailed[]>,
 ) => {
-  const products = await getProducts();
+  const products = await getDetailedProductsRest();
   return res.json(products);
 };
 
@@ -27,7 +27,7 @@ export const filteredProducts = async (
   res: Response<IProductRestDetailed[]>,
 ) => {
   const filterName = req.query.name;
-  const products = await getProducts();
+  const products = await getDetailedProductsRest();
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(filterName),
   );
