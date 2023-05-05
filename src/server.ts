@@ -4,7 +4,7 @@ import * as path from 'path';
 
 dotenv.config({ path: path.join(__dirname, '../.env') });
 
-import * as ProductsController from './controllers/ProductsController';
+import * as ProductsController from './controllers/ProductsController/';
 
 const app = express();
 
@@ -14,7 +14,9 @@ app.get('/', (req, res) => {
   return res.json({ msg: 'hello world' });
 });
 
-app.get('/product/rests', ProductsController.getProductsRest);
+app.get('/product/list', ProductsController.getAllProducts);
+app.get('/product/rests', ProductsController.getProductRests);
+app.get('/product/rests/filtered', ProductsController.filteredProducts);
 app.get('/product/:id', ProductsController.getOneProduct);
 
 app.listen(3002, () => {
